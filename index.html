@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио</title>
+    <link rel="icon" href="img/work/resume.png">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- External JS libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="script/EyeScript.js"></script>
+    <script src="script/robot.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- FontAwesome for icons -->
+    <script src="https://kit.fontawesome.com/b97ec58f43.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-dark">
+    <div class="container text-center mt-3 text-white">
+        <!-- Header Section -->
+        <nav class="navbar navbar-expand-lg fs-4">
+            <div class="container-fluid">
+                <h5 class="navbar-brand text-white fs-2">JackZet</h5>
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item ms-3"><a class="nav-link text-white" href="#skills">Мои навыки</a></li>
+                    <li class="nav-item ms-3"><a class="nav-link text-white" href="#aboutMe">Обо мне</a></li>
+                    <li class="nav-item ms-3"><a class="nav-link text-white" href="#portfolio">Портфолио</a></li>
+                    <li class="nav-item ms-3"><a class="nav-link text-white" href="#contacts">Контакты</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Top Section -->
+        <div class="row top">
+            <div class="col-5 d-flex flex-wrap">
+                <div class="styled-text">
+                    <span class="name">Грудинин Никита</span> \ <span class="nickname">JackZet</span>
+                </div>
+                <div class="text-start fw-bold fs-5" id="topSkills">
+                    Full Stack Web-Разработчик, Python \ Django программист, JavaScript, HTML-Верстальщик.
+                </div>
+            </div>
+            <div class="col-7" id="robotBlock">
+                <canvas id="robotCanvas"></canvas>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Skills Section -->
+        <div class="row mt-4" id="skills">
+            <div class="col-12">
+                <h3>Мои навыки</h3>
+                <hr>
+            </div>
+            <!-- Frontend Skills -->
+            <div class="col-4 skill-card">
+                <i class="fas fa-laptop-code"></i>
+                <h5>Веб-разработка (Frontend)</h5>
+                <ul>
+                    <li>HTML 5</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>jQuery</li>
+                    <li>Ajax</li>
+                    <li>Canvas</li>
+                </ul>
+            </div>
+            <!-- Backend Skills -->
+            <div class="col-4 skill-card">
+                <i class="fas fa-server"></i>
+                <h5>Веб-разработка (Backend)</h5>
+                <ul>
+                    <li>Python</li>
+                    <li>Django</li>
+                    <li>RESTful API</li>
+                    <li>Парсинг веб-страниц и API</li>
+                    <li>Телеграмм Бот(telebot, aiogram)</li>
+                </ul>
+            </div>
+            <!-- Database Skills -->
+            <div class="col-4 skill-card">
+                <i class="fas fa-database"></i>
+                <h5>Базы данных</h5>
+                <ul>
+                    <li>PostgreSQL</li>
+                    <li>MySQL</li>
+                    <li>SQLite</li>
+                </ul>
+            </div>
+            <!-- Tools & Technologies -->
+            <div class="col-4 skill-card">
+                <i class="fas fa-tools"></i>
+                <h5>Инструменты и технологии</h5>
+                <ul>
+                    <li>Git & GitHub</li>
+                    <li>Docker</li>
+                </ul>
+            </div>
+            <!-- API Skills -->
+            <div class="col-4 skill-card">
+                <i class="fas fa-plug"></i>
+                <h5>Работа с API</h5>
+                <ul>
+                    <li>REST API</li>
+                    <li>OAuth (Google, Facebook)</li>
+                    <li>WebSockets</li>
+                    <li>Google Maps API</li>
+                    <li>Stripe API</li>
+                    <li>Twilio API</li>
+                    <li>Weather API</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- About Me Section -->
+        <div class="aboutMe text-center" id="aboutMe">
+            <h3>Обо мне</h3>
+            <hr>
+            <div class="row mt-5">
+                <div class="col-3 section-left-card">
+                    <h3>Немного о себе</h3>
+                    <img src="img/card.png" alt="Проект">
+                </div>
+                <div class="col-9 section-right">
+                    <h5>Доброго времени суток!</h5>
+                    <div class="text-start">
+                        <p>Меня зовут <span class="fw-bold">Никита Грудинин</span>, но в мире web-разработки я известен под псевдонимом <span class="fw-bold">JackZet</span>. Я занимаюсь <span class="fw-bold">разработкой сайтов с нуля</span> и <span class="fw-bold">под ключ</span>, а также <span class="fw-bold">адаптацией существующих проектов</span>.</p>
+                        <p>В своей работе использую <span class="fw-bold">Django</span> на языке <span class="fw-bold">Python</span>, что позволяет мне создавать качественные и масштабируемые решения.</p>
+                        <p>Буду рад обсудить ваши проекты и помочь воплотить идеи в реальность!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-3 section-left-quality">
+                    <h3>Гарантия качества</h3>
+                    <img src="img/quality.png" alt="Качество">
+                </div>
+                <div class="col-9 section-right">
+                    К сожалению, несмотря на предварительное тестирование кода, мне не всегда удается предсказать все возможные ошибки, которые могут произойти в будущем. Если в процессе работы возникнут ошибки или проблемы с безопасностью, я обязуюсь исправить их в кратчайшие сроки и бесплатно.
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-3 section-left-education">
+                    <h3>Самообразование</h3>
+                    <img src="img/book.png" alt="Образование">
+                </div>
+                <div class="col-9 section-right">
+                    Я занимаюсь изучением программирования с 2020 года, черпая знания из курсов, видеокурсов, книг и форумов.
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Portfolio Section -->
+        <div class="portfolio row" id="portfolio">
+            <h3>Портфолио</h3>
+            <div class="typeWork">
+                <ul class="list-unstyled">
+                    <li>Все работы</li>
+                    <li>Pet-проекты</li>
+                </ul>
+            </div>
+            <div class="allWork">
+                <div class="singleWork col-3">
+                    <img src="img/work/angrad/logo.jpg" alt="Изображение работы">
+                    <div class="moreDetails">
+                        <h4>Pet-project "Angrad"</h4>
+                        <p>Описание</p>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Запустите демо модального окна
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal for Project Details -->
+            <div class="modal fade text-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Заголовок модального окна</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                        </div>
+                        <div class="modal-body text-start">
+                            <h2 class="mb-3">Pet-project "Angrad"</h2>
+                            <a href="https://angrad.pythonanywhere.com/Economy/Market/">Angrad</a>
+                            <p>Проект <strong>Angrad</strong> стал моим первым pet-проектом который я начал разрабатывать и над которым я работаю по сей день. <strong>Angrad</strong> разрабатывался по браузерной онлайн игре,в который я старался браться за самые смелые идеи и внедрять как можно больше технологи. В частности я реализовал там систему парсинга данных на основе selenium,авторизацию пользователя,ограничения прав доступа,систему выборов, личные кабинеты для разных пользователей, телеграмм оповещения,казино и собственный внутриальянсовый рынок где игроки могут обмениваться,торговать,оставлять ордеры за виртуальную внутриальянсовую валюту.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="contacts" id="contacts">
+        	<h3>Контакты</h3>
+        	<div class="row">
+        		<div class="col-6">
+        			<img src="img/contacts/email.png" alt="">
+        			<h3>@mail.ru</h3>
+        			<p style="color:#2E8DFF">jack_zet@mail.ru</p>
+        		</div>
+        		<div class="col-6">
+        			<img src="img/contacts/web.png" alt="">
+        			<h3>Website</h3>
+        			<p>........</p>
+        		</div>
+        		<div class="col-6">
+        			<img src="img/contacts/vkontakte.png" alt="">
+        			<h3>Вконтакте</h3>
+        			<p style="color: #3B77B2">https://vk.com/jack_371</p>
+        		</div>
+        		<div class="col-6">
+        			<img src="img/contacts/telegram.png" alt="">
+        			<h3>Телеграм</h3>
+        			<p style="color: #039BE5">@JackZet23</p>
+        		</div>
+        	</div>
+        </div>
+    </div>
+
+    <footer>
+			<i class="fa-regular fa-copyright" aria-hidden="true"></i>opyright 2025 <br>
+			Made <span class="fst-italic">by</span> <span class="fst-italic fw-bold" style="color: #62219E;">JackZet</span>
+    </footer>
+</body>
+
+</html>

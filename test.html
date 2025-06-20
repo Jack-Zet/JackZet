@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Анимированное Burger Menu</title>
+  <style>
+    /* Общие стили для всех элементов */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Стили для body */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    /* Стили для кнопки бургер-меню */
+    .burger-menu {
+      position: fixed; /* Фиксированное положение */
+      top: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 45px;
+      height: 45px;
+      background-color: #444; /* Темный фон кнопки */
+      border-radius: 8px; /* Закругленные углы */
+      padding: 10px;
+      cursor: pointer;
+      z-index: 1001; /* Обеспечивает видимость поверх контента */
+      transition: background-color 0.3s ease;
+    }
+
+    /* Эффект при наведении на кнопку */
+    .burger-menu:hover {
+      background-color: #555;
+    }
+
+    /* Стили для полосок меню (бургер) */
+    .burger-menu .bar {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      border-radius: 5px;
+      transition: all 0.3s ease; /* Плавная анимация */
+    }
+
+    /* При активации бургер-меню, анимация изменения полосок */
+    .burger-menu.active .bar:nth-child(1) {
+      transform: translateY(8px) rotate(45deg); /* Первая полоска превращается в верхнюю часть креста */
+    }
+
+    .burger-menu.active .bar:nth-child(2) {
+      opacity: 0; /* Вторая полоска исчезает */
+    }
+
+    .burger-menu.active .bar:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg); /* Третья полоска превращается в нижнюю часть креста */
+    }
+
+    /* Стили для полного экрана меню */
+    nav {
+      position: fixed; /* Фиксированное положение */
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.9); /* Тёмный фон */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      opacity: 0; /* Скрытое меню по умолчанию */
+      pointer-events: none; /* Блокировка событий при закрытом меню */
+      transition: opacity 0.4s ease; /* Плавное появление */
+      z-index: 1000; /* Помещаем меню выше остального контента */
+    }
+
+    /* Когда меню становится видимым, меняем его стиль */
+    nav.visible {
+      opacity: 1;
+      pointer-events: auto; /* Разрешаем взаимодействие с меню */
+    }
+
+    /* Стили для списка пунктов меню */
+    nav ul {
+      list-style: none; /* Убираем стандартные маркеры списка */
+      padding: 0;
+      text-align: center; /* Центрируем текст */
+    }
+
+    /* Стили для каждого пункта меню */
+    nav ul li {
+      margin: 20px 0;
+      opacity: 0; /* Пункты меню скрыты по умолчанию */
+      transform: translateY(20px); /* Пункты появляются с небольшой анимацией */
+      transition: opacity 0.4s ease, transform 0.4s ease; /* Плавная анимация появления */
+    }
+
+    /* Когда меню становится видимым, делаем пункты видимыми */
+    nav.visible ul li {
+      opacity: 1;
+      transform: translateY(0); /* Пункты приходят на своё место */
+    }
+
+    /* Задержка появления пунктов меню */
+    nav.visible ul li:nth-child(1) { transition-delay: 0.1s; }
+    nav.visible ul li:nth-child(2) { transition-delay: 0.2s; }
+    nav.visible ul li:nth-child(3) { transition-delay: 0.3s; }
+    nav.visible ul li:nth-child(4) { transition-delay: 0.4s; }
+
+    /* Стили для ссылок в пунктах меню */
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 28px;
+      font-weight: bold;
+      transition: color 0.2s ease; /* Плавное изменение цвета */
+    }
+
+    /* Эффект наведения на ссылку */
+    nav ul li a:hover {
+      color: #ccc;
+    }
+
+    /* Контент страницы */
+    .content {
+      padding: 100px 20px;
+      height: 3000px; /* Высокий контент для прокрутки */
+      background: linear-gradient(#f0f0f0, #e0e0e0);
+    }
+
+    @media (max-width: 768px) {
+      .burger-menu {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Кнопка бургер-меню -->
+  <div class="burger-menu" onclick="toggleMenu()" id="burger">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <!-- Полноэкранное меню -->
+  <nav id="menu">
+    <ul>
+      <li><a href="#">Главная</a></li>
+      <li><a href="#">О нас</a></li>
+      <li><a href="#">Услуги</a></li>
+      <li><a href="#">Контакты</a></li>
+    </ul>
+  </nav>
+
+  <!-- Контент страницы -->
+  <div class="content">
+    <h1>Анимированное меню</h1>
+    <p>Меню с плавной анимацией, скрытием и открытиями.</p>
+    <p style="margin-top: 2800px;">Конец страницы 🌀</p>
+  </div>
+
+  <script>
+    // Получаем элементы страницы
+    const burger = document.getElementById('burger'); // Кнопка бургер-меню
+    const menu = document.getElementById('menu'); // Полноэкранное меню
+    const links = menu.querySelectorAll('a'); // Все ссылки в меню
+
+    // Функция для открытия меню
+    function openMenu() {
+      menu.classList.add('visible'); // Добавляем класс для видимости меню
+      burger.classList.add('active'); // Активация анимации бургер-кнопки
+    }
+
+    // Функция для закрытия меню
+    function closeMenu() {
+      menu.classList.remove('visible'); // Убираем класс для скрытия меню
+      burger.classList.remove('active'); // Убираем анимацию с бургер-кнопки
+    }
+
+    // Функция для переключения состояния меню
+    function toggleMenu() {
+      if (menu.classList.contains('visible')) { // Если меню открыто
+        closeMenu(); // Закрыть меню
+      } else { // Если меню закрыто
+        openMenu(); // Открыть меню
+      }
+    }
+
+    // Закрытие меню по клику на ссылку
+    links.forEach(link => {
+      link.addEventListener('click', closeMenu); // После клика по ссылке меню закрывается
+    });
+
+    // Закрытие меню при клике вне меню (если кликнуть по фону)
+    menu.addEventListener('click', (e) => {
+      if (!e.target.closest('ul')) { // Если кликнули вне списка
+        closeMenu(); // Закрыть меню
+      }
+    });
+
+    // Закрытие меню при нажатии клавиши Esc
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' || e.key === 'Esc') { // Если нажата клавиша Esc
+        closeMenu(); // Закрыть меню
+      }
+    });
+  </script>
+</body>
+</html>
